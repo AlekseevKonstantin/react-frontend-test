@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1976d2;
+  padding: 16px;
+}
+
+.navbar__item {
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  margin-right: 24px;
+}
+
+.navbar__item:last-child {
+  margin-right: 0;
+}
