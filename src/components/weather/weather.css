@@ -1,0 +1,9 @@
+.weather {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  border-bottom: 2px solid #979a9c;
+}
+

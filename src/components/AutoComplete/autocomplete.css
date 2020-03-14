@@ -1,0 +1,108 @@
+.autocomplete {
+  position: relative;
+  min-width: 270px;
+}
+
+.autocomplete-inner {
+  position: relative;
+}
+
+.autocomplete__input {
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 4px 27px 4px 7px;
+  transition: border-radius .3s ease-in-out;
+}
+
+.autocomplete.active {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.autocomplete-btn-group{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.autocomplete__check,
+.autocomplete__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  transition: opacity .3s ease-in-out;
+}
+
+.autocomplete__check.visible,
+.autocomplete__clear.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.autocomplete__check.hidden,
+.autocomplete__clear.hidden {
+  transition: opacity .3s ease-in-out, visibility 0s ease-in-out .3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.autocomplete__check {
+  margin-left: 8px;
+}
+
+.autocomplete__check:hover,
+.autocomplete__clear:hover {
+  cursor: pointer;
+}
+
+
+.autocomplete__clear > svg {
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.autocomplete__check > svg {
+  min-width: 14px;
+  width: 14px;
+  height: 16px;
+}
+
+.autocomplete__list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  max-height: 300px;
+  width: 100%;
+  overflow-y: auto;
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid #ededed;
+  border-radius: 0 0 4px 4px;
+}
+
+.autocomplete__list-item {
+  padding: 4px 7px;
+  color: #232323;
+}
+
+.autocomplete__list-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.autocomplete__list-item:hover {
+  cursor: pointer;
+  background-color: #ededed;
+}
+
+.autocomplete.hidden {
+  display: none;
+}

@@ -1,7 +1,14 @@
 /* consts */
 
 const consts = {
-  GET_CITIES: 'GET_CITIES' 
+  SET_CUR_CITY        : 'SET_CUR_CITY',
+  SET_CHECK_CITY      : 'SET_CHECK_CITY',
+  SET_DEFAULT_ID      : 'SET_DEFAULT_ID',
+  SET_IS_WAITING      : 'SET_IS_WAITING',
+  SAVE_CITY           : 'SAVE_CITY',
+  SET_FORECAST        : 'SET_FORECAST',
+  SET_IS_FORECAST     : 'SET_IS_FORECAST',
+  SET_SAVE_CITIES     : 'SET_SAVE_CITIES'  
 }
 
 export default consts;

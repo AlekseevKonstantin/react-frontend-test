@@ -1,22 +1,35 @@
 import React from "react";
 import { Link }  from "react-router-dom"
 
-import styles from './navbar.module.css'
+import './navbar.css'
 
-import AutoComplete from '../AutoComplete/autocomlete';
+import AutoComplete from '../autoComplete/autocomleteContainer';
+
+import { getArrayOfCities } from '../../store/cities'
 
 export default function NavbarPage (props) {
 
+  function isForecastTrue() {
+    props.setIsForecast(true)
+  }
+
+  function isForecastFalse() {
+    props.setIsForecast(false)
+  }
+
+  const city = getArrayOfCities()
+
   return (
-    <nav className={styles.navbar}>
+    <nav className="navbar">
       <div className="row">
-        <Link to="/" className={styles.navbar__item}>Today</Link>
-        <Link to="/tomorrow" className={styles.navbar__item}>Tomorrow</Link>
-        <Link to="/week" className={styles.navbar__item}>Week</Link>
+        <Link to="/" className="navbar__item" onClick={isForecastFalse}>Home</Link>
+        <Link to="/today" className="navbar__item" onClick={isForecastTrue}>Today</Link>
+        <Link to="/tomorrow" className="navbar__item" onClick={isForecastTrue}>Tomorrow</Link>
+        <Link to="/week" className="navbar__item" onClick={isForecastTrue}>Week</Link>
       </div>
 
       <form className="form">
-        <AutoComplete list={['Moscow', 'St Peterburg']}/>
+        <AutoComplete list={city} placeholder='Выберите город ...'/>
       </form>
     </nav>
   )
