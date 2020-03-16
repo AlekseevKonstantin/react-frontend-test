@@ -24,7 +24,7 @@ const ForecastMap = withScriptjs(withGoogleMap( (props) => {
           <InfoWindow position={{ lat: props.forecast.city.coord.lat, lng: props.forecast.city.coord.lon }}
                       onCloseClick={closeClickHandler}>
             <div>            
-              <h4>{props.forecast.city.name}</h4>
+              <h4 className="mb--small">{props.forecast.city.name}</h4>
               <span className="text--small">{`температура: ${props.forecast.list[0].main.temp}`} <span className="celsius--small">C</span></span>
               <span className="text--small">{`ощущается как: ${props.forecast.list[0].main.feels_like}`} <span className="celsius--small">C</span></span>
               <span className="text--small">{`давление: ${props.forecast.list[0].main.pressure} мм. рт. ст.`}</span>

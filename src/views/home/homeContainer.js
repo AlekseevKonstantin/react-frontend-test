@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Home from './home'
-import { fetchForecastById, setCurCity, setIsWaiting } from '../../actions/actions'
+import { fetchForecastById, setIsWaiting } from '../../actions/actions'
 
 
 const matStateToProps = (state) => {
@@ -13,8 +13,7 @@ const matStateToProps = (state) => {
 
 const mapDispathToProps = (dispatch) => {
   return {
-    fetchForecastById: (id, apiKey) => dispatch(fetchForecastById(id, apiKey)),
-    setCurCity: (city) => dispatch(setCurCity(city)),
+    fetchForecastById: (id, apiKey, actionType) => dispatch(fetchForecastById(id, apiKey, actionType)),
     setIsWaiting: (isWaiting) => dispatch(setIsWaiting(isWaiting))
   };
 }

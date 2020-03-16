@@ -16,7 +16,7 @@ const matStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
   return {
     fetchWeatherById : (id, apiKey, actionType) => {dispatch(fetchWeatherById(id, apiKey, actionType))},
-    fetchForecastById: (id, apiKey) => dispatch(fetchForecastById(id, apiKey)),
+    fetchForecastById: (id, apiKey, actionType) => dispatch(fetchForecastById(id, apiKey, actionType)),
     setIsWaiting : (isWaiting) => dispatch(setIsWaiting(isWaiting)),
     setDefaultId : (id) => dispatch(setDefaultId(id)),
     saveCity: () => dispatch(saveCity())

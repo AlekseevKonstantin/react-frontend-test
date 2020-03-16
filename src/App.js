@@ -62,9 +62,7 @@ function App (props) {
                      component={() => <Week forecast={props.weekForecast}/>} />
               
               <Route path="/city/:name"  
-                     component={() => <Detailed today={props.todayForecast}
-                                                tomorrow={props.tomorrowForecast}  
-                                                week={props.weekForecast}/>} />
+                     component={() => <Detailed detailed={props.detailed}/>} />
             </Switch>
 
           </CSSTransition>
@@ -81,7 +79,8 @@ const matStateToProps = (state) => {
     todayForecast: state.todayForecast,
     tomorrowForecast: state.tomorrowForecast,
     weekForecast: state.weekForecast,
-    curCity: state.curCity
+    curCity: state.curCity,
+    detailed: state.detailed
   };
 }
 

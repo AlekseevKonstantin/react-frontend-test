@@ -44,6 +44,10 @@ export function setIsForecast (isForecast) {
   return {type: c.SET_IS_FORECAST, isForecast}
 }
 
+function setForecastInfo(forecast) {
+  return forecast.city
+}
+
 function setToday(forecast) {
 
   let list = forecast.list,
@@ -105,8 +109,7 @@ function setWeek(forecast) {
   return newForecast;
 }
 
-export function setForecast (forecast) {
-  const isWaitingStop = false;
+function setForecast (forecast) {
   let todayForecast = null,
       tomorrowForecast = null,
       weekForecast = null;
@@ -117,9 +120,31 @@ export function setForecast (forecast) {
     weekForecast = setWeek(forecast)
   }
   
-  return {type: c.SET_FORECAST, todayForecast, tomorrowForecast, weekForecast, isWaitingStop}
+  return {todayForecast, tomorrowForecast, weekForecast}
     
 }  
+
+export function setCurForecast (forecast) {
+  const isWaitingStop = false,
+        {todayForecast, tomorrowForecast, weekForecast} = setForecast (forecast)
+
+  return {type: c.SET_FORECAST, todayForecast, tomorrowForecast, weekForecast, isWaitingStop}
+}
+
+export function setDedailedForecast (forecast) {
+  const isWaitingStop = false,
+        forecastInfo = setForecastInfo(forecast),
+        {todayForecast, tomorrowForecast, weekForecast} = setForecast (forecast),
+        detailed = {
+          info: forecastInfo,
+          today: todayForecast, 
+          tomorrow: tomorrowForecast, 
+          week: weekForecast,
+        }
+  
+  return {type: c.SET_DETAILED, detailed, isWaitingStop}
+}
+
 
 export function fetchWeatherById (id, apiKey, actionType) {
 
@@ -142,8 +167,20 @@ export function fetchWeatherById (id, apiKey, actionType) {
   }
 } 
 
-export function fetchForecastById (id, apiKey) {
+export function fetchForecastById (id, apiKey, actionType) {
+
+  let action = null
+
+  switch(actionType) {
+    case c.SET_DETAILED:
+      action = setDedailedForecast
+      break
+    default:
+      action = setCurForecast
+      break
+  }
+
   return (dispatch) => {
-    createInstance().getForecastDataById(id, apiKey, setForecast, dispatch);
+    createInstance().getForecastDataById(id, apiKey, action, dispatch);
   }
 }

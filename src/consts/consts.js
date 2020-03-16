@@ -8,7 +8,8 @@ const consts = {
   SAVE_CITY           : 'SAVE_CITY',
   SET_FORECAST        : 'SET_FORECAST',
   SET_IS_FORECAST     : 'SET_IS_FORECAST',
-  SET_SAVE_CITIES     : 'SET_SAVE_CITIES'  
+  SET_SAVE_CITIES     : 'SET_SAVE_CITIES',
+  SET_DETAILED        : 'SET_DETAILED'
 }
 
 export default consts;

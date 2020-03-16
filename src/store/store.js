@@ -7,13 +7,14 @@ let initialState = {
   curCity: null,
   apiKey: 'bc023c2f5d4e592592014d0faa0c4523',
   defaultId: '524894',
+  prevId: null,
   defaultName: 'Moscow',
   isWaiting: true,
   todayForecast: null,
   tomorrowForecast: null,
   weekForecast: null,
   isForecast: false,
-  sessionError: undefined,
+  detailed: null
 }
 
 /* reducer */
@@ -21,14 +22,15 @@ const reducer = (state = initialState, action) => {
   
   switch (action.type){
     case c.SET_IS_WAITING:
-      let s = {...state, isWaiting: action.isWaiting}
-      console.dir(s)
-      return s
+      return {...state, isWaiting: action.isWaiting}
     case c.SET_DEFAULT_ID: 
       return {...state, defaultId: action.id}
     case c.SET_CUR_CITY:
        return {...state, curCity: action.curCity, isWaiting: action.isWaiting};
-    case c.SAVE_CITY: 
+    case c.SAVE_CITY:
+      if (state.saveCities.length === 10) { 
+        state.saveCities.splice(0, 1)
+      } 
       return {...state, saveCities: [...state.saveCities, state.curCity]}
     case c.SET_SAVE_CITIES:
       return {...state, saveCities: action.cities}
@@ -39,6 +41,8 @@ const reducer = (state = initialState, action) => {
                         tomorrowForecast: action.tomorrowForecast, 
                         weekForecast: action.weekForecast, 
                         isWaiting: action.isWaiting}
+    case c.SET_DETAILED:
+      return {...state, detailed: action.detailed, isWaiting: action.isWaiting}
     default: 
       return {...state};
   };

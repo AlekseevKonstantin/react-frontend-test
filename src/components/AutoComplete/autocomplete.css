@@ -106,3 +106,9 @@
 .autocomplete.hidden {
   display: none;
 }
+
+@media (max-width: 575px) {
+  .autocomplete {
+    min-width: 230px;
+  }
+}

@@ -5,10 +5,8 @@ import './home.css'
 export default function Home (props) {
   
   function cityToProps() {
-    // debugger
     return props.saveCities.map((city, index) => {
       return ( <CityCard city={city}
-                         setCity={props.setCurCity}
                          setIsWaiting={props.setIsWaiting} 
                          fetchForecastById={props.fetchForecastById}
                          apiKey={props.apiKey}
@@ -19,7 +17,7 @@ export default function Home (props) {
   return (
     <div className="change-container container">
       <h2 className="mb--medium">Сохраненные города</h2>
-      <div className="row row--nm row--flex-wrap w100p">
+      <div className="row row--nm row--flex-wrap">
         {props.saveCities && props.saveCities.length > 0 && cityToProps()}
       </div>
     </div>

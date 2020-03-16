@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import './weather.css'
 import c from '../../consts/consts'
 
+import { CSSTransition } from  'react-transition-group';
+
 import { getCityIdByCoords } from '../../store/cities';
 import { fillDate } from '../../utils/enum'
 
@@ -14,14 +16,20 @@ export default function Weather (props) {
       if (id !== -1) {
         props.setDefaultId(id)
         props.fetchWeatherById(id, props.apiKey, c.SET_CUR_CITY)
-        props.fetchForecastById(id, props.apiKey)
+        props.fetchForecastById(id, props.apiKey, c.SET_FORECAST)
       }
     });
   }, [])
 
   function saveCity() {
+
+    let cities = [...props.saveCities]
+    if(cities.length === 10) {
+      cities.splice(0, 1)
+    }
+
     props.saveCity()
-    const storage = [...props.saveCities, props.curCity];
+    const storage = [...cities, props.curCity];
     localStorage.setItem('saveCities', JSON.stringify(storage));
   }
 
@@ -38,11 +46,12 @@ export default function Weather (props) {
         <span className="text text--center text--light">
           {`${props.curCity.name}, ${props.curCity.sys.country}`}
         </span>
-        { !props.isForecast &&
+        <CSSTransition in={!props.isForecast} timeout={300}>
           <span className="text text--center text--semibold mt--less-medium">
             {`${props.curCity.weather[0].description}, ветер - ${props.curCity.wind.speed} м/сек`}
           </span>
-        }
+        
+        </CSSTransition>
       </div>
       <button type="button" 
               className="btn btn--check-city"

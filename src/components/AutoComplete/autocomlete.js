@@ -61,6 +61,14 @@ export default function AutoComplete (props) {
 
   }, [value])
 
+  function loadData(id) {
+    props.setIsWaiting(true)
+    setTimeout(()=>{
+      props.fetchWeatherById(id, props.apiKey, c.SET_CUR_CITY)
+      props.fetchForecastById(id, props.apiKey, c.SET_FORECAST)
+    }, 400)
+  }
+
   function chooseItem (e) {
     const input = inputRef.current;
     input.value = e.target.innerText;
@@ -70,9 +78,7 @@ export default function AutoComplete (props) {
       input.focus()
     },100)
     
-    const id = getCityId(e.target.innerText)
-    props.fetchWeatherById(id, props.apiKey, c.SET_CUR_CITY)
-    props.setDefaultId(id)
+    loadData(getCityId(input.value))
   }
 
   function clearInput (e) {
@@ -81,6 +87,8 @@ export default function AutoComplete (props) {
     input.value = '';
     setValue('');
     setCheck(false)
+
+    loadData(props.defaultId)
   }
 
   const inputAddClass = viewList.length > 0 ? "active" : ''
@@ -104,13 +112,6 @@ export default function AutoComplete (props) {
               <path d="M0 0h24v24H0z" fill="none" />
             </svg>
           </button>
-          {/* <button type="button" 
-                  className="autocomplete__check"
-                  onClick={enterCity}>
-            <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
-              <path fill-rule="evenodd" d="M 22.59375 3.5 L 8.0625 18.1875 L 1.40625 11.5625 L 0 13 L 8.0625 21 L 24 4.9375 Z" />
-            </svg>
-          </button> */}
         </div>
       </div>
 

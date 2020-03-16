@@ -7,7 +7,7 @@ export default function WeekForecast (props) {
     return props.forecast.list.map((item, index) => {
       const dt = new Date(item.dt_txt); 
       return (
-        <div className="col w20p w33p-md w50p-sm w100p-xs mb--small" key={index}>
+        <div className="col w20p w33p-md w50p-sm w100p-xs mb--less-medium" key={index}>
           <div className="card big">
             <span className="text--small mb--medium">{`${fillDate(dt.getDate())}:${fillDate(dt.getMonth())}:${dt.getFullYear()}`}</span>
             <div className="w100p">
