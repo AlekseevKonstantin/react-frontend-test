@@ -66,11 +66,7 @@ export const createInstance = () => {
 
   const createAxios = (res, dispathAction, dispatch) => {
     res
-    .then(response => {
-      if (dispathAction !== null && dispathAction !== undefined){
-        dispatch(dispathAction(response.data, dispatch));
-      }
-    })
+    .then(response => dispatch(dispathAction(response.data)))
     .catch(error => dispatch(dispathAction(error.request)));
   }
 

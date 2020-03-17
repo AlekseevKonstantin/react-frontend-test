@@ -92,6 +92,11 @@
 .autocomplete__list-item {
   padding: 4px 7px;
   color: #232323;
+  transition: background-color .3s ease-in-out;
+}
+
+.autocomplete__list-item.active {
+  background-color: #f6f6f6;
 }
 
 .autocomplete__list-item:last-child {

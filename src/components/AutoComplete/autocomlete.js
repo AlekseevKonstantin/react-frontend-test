@@ -31,7 +31,6 @@ export default function AutoComplete (props) {
     return initList ()
   })
 
-
   let [viewList, setViewList] = useState(function(){
     return [];
   })
@@ -115,7 +114,7 @@ export default function AutoComplete (props) {
         </div>
       </div>
 
-      <div className={`autocomplete__list ${listAddClass}`}>
+      <div className={`autocomplete__list ${listAddClass}`} >
         {viewList.length > 0 ? listToProps(): null}
       </div>
     </div>

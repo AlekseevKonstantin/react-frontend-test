@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Forecast from '../forecast/forecast'
 import WeekForecast from '../week/forecast'
 
 export default function Detailed (props) {
+
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
     props.detailed ?
     <div className="change-container  container">

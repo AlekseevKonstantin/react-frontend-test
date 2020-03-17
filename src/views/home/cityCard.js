@@ -18,6 +18,7 @@ export default function CityCard (props) {
       props.fetchForecastById(props.city.id, props.apiKey, c.SET_DETAILED)
     }, 400)
     
+    
   }
 
   return (
