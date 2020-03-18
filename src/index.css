@@ -217,6 +217,10 @@ h4 {
   margin-top: 24px;
 }
 
+.pt--less-medium {
+  padding-top: 24px;
+}
+
 .hidden {
   display: none;
 }
@@ -459,6 +463,46 @@ h4 {
 .fade-exit.fade-exit-active {
   opacity: 0.01;
   transition: opacity 400ms ease-in-out ;
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.alert-exit {
+  opacity: 1;
+
+}
+.alert-exit-active {
+  opacity: 0;
+  max-height: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 400ms, max-height 400ms;
+}
+
+.alert-exit-done {
+  
+  display: none; 
 }
 
 /* media */

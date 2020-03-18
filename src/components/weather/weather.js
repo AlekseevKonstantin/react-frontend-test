@@ -46,11 +46,12 @@ export default function Weather (props) {
         <span className="text text--center text--light">
           {`${props.curCity.name}, ${props.curCity.sys.country}`}
         </span>
-        <CSSTransition in={!props.isForecast} timeout={300}>
-          <span className="text text--center text--semibold mt--less-medium">
-            {`${props.curCity.weather[0].description}, ветер - ${props.curCity.wind.speed} м/сек`}
-          </span>
-        
+        <CSSTransition in={!props.isForecast ? true : false} timeout={300} classNames='alert'>
+          <div>
+            <span className="text text--center text--semibold pt--less-medium">
+              {`${props.curCity.weather[0].description}, ветер - ${props.curCity.wind.speed} м/сек`}
+            </span>
+          </div>
         </CSSTransition>
       </div>
       <button type="button" 
